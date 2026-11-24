@@ -23,7 +23,7 @@ Aplicação web para controle de gastos pessoais, desenvolvida como projeto do 4
 - JavaScript (funções, arrays, eventos e manipulação do DOM)
 
 ```bash
-git clone https://github.com/SEU-USUARIO/meus-gastos.git
+git clone https://github.com/AneRafaelle/AneRafaelle-idw-av1-av2-4bimestre.git
 cd meus-gastos
 ```
 
