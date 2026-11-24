@@ -1,0 +1,104 @@
+/* ===== Identidade visual – MeusGastos ===== */
+:root {
+  --verde: #1f7a5a;
+  --verde-escuro: #165c44;
+  --verde-claro: #e6f4ee;
+  --texto: #1d2b26;
+  --fundo: #f5f8f6;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--fundo);
+  color: var(--texto);
+}
+
+h1, h2, h3, .h2, .h3, .h4, .navbar-brand {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+section { scroll-margin-top: 80px; }
+
+/* Navbar */
+.bg-verde { background-color: var(--verde) !important; }
+.navbar-brand { font-weight: 700; letter-spacing: .3px; }
+.navbar .nav-link { color: rgba(255, 255, 255, .85); font-weight: 500; }
+.navbar .nav-link:hover,
+.navbar .nav-link:focus { color: #fff; }
+
+/* Botões */
+.btn-verde {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--verde);
+  --bs-btn-border-color: var(--verde);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--verde-escuro);
+  --bs-btn-hover-border-color: var(--verde-escuro);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--verde-escuro);
+  --bs-btn-active-border-color: var(--verde-escuro);
+  font-weight: 500;
+}
+.btn-outline-success {
+  --bs-btn-color: var(--verde);
+  --bs-btn-border-color: var(--verde);
+  --bs-btn-hover-bg: var(--verde);
+  --bs-btn-hover-border-color: var(--verde);
+  --bs-btn-active-bg: var(--verde);
+  --bs-btn-active-border-color: var(--verde);
+}
+
+/* Cards de resumo */
+.card { border: 1px solid #e0e8e3; border-radius: .75rem; }
+.card-resumo { border-left: 5px solid var(--verde); }
+.card-gasto { border-left-color: #e76f51; }
+.card-saldo { border-left-color: #2a9d8f; }
+.rotulo {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #5d6f67;
+  font-weight: 500;
+}
+.valor { font-family: "Poppins", sans-serif; font-weight: 600; transition: filter .2s; }
+.saldo-negativo { color: #c0392b; }
+
+/* Barras de progresso */
+.progress, .progress-stacked { height: 16px; border-radius: 8px; background-color: #dfe9e4; }
+.progress-bar.bg-verde { background-color: var(--verde) !important; transition: width .4s; }
+.progress-bar.alerta { background-color: #f4a261 !important; }
+.progress-bar.perigo { background-color: #e63946 !important; }
+
+/* Categorias */
+.card-categoria .ponto {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  margin-right: .5rem;
+}
+.card-categoria .progress { height: 6px; }
+.card-categoria { transition: transform .15s, box-shadow .15s; }
+.card-categoria:hover { transform: translateY(-3px); box-shadow: 0 .4rem 1rem rgba(0, 0, 0, .08); }
+
+/* Tabela */
+.table > :not(caption) > * > * { padding: .75rem; }
+.badge-cat { color: #fff; font-weight: 500; padding: .4em .7em; border-radius: 1rem; font-size: .8rem; }
+
+/* Ocultar valores */
+.valores-ocultos .valor,
+.valores-ocultos .sensivel { filter: blur(8px); user-select: none; }
+
+/* Foco acessível */
+.form-control:focus, .form-select:focus, .btn:focus-visible {
+  border-color: var(--verde);
+  box-shadow: 0 0 0 .2rem rgba(31, 122, 90, .25);
+}
+
+/* Responsividade extra */
+@media (max-width: 576px) {
+  .h3 { font-size: 1.15rem; }
+  .card-body.p-4 { padding: 1.25rem !important; }
+}
