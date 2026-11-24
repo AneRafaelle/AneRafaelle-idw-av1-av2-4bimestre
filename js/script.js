@@ -1,13 +1,10 @@
-/* ===== MeusGastos – Etapas 1 e 2 ===== */
-
-// ---------- Dados ----------
 const CATEGORIAS = [
-  { nome: "Alimentação", cor: "#e76f51" },
-  { nome: "Transporte", cor: "#2a9d8f" },
-  { nome: "Moradia", cor: "#264653" },
-  { nome: "Lazer", cor: "#9b5de5" },
-  { nome: "Saúde", cor: "#e63946" },
-  { nome: "Educação", cor: "#f4a261" },
+  { nome: "Alimentação", cor: "#b98b4e" },
+  { nome: "Transporte", cor: "#3e5c45" },
+  { nome: "Moradia", cor: "#6b8057" },
+  { nome: "Lazer", cor: "#8c6b4a" },
+  { nome: "Saúde", cor: "#a8553f" },
+  { nome: "Educação", cor: "#5f7d8a" },
 ];
 
 let renda = 3500;
@@ -20,14 +17,12 @@ let proximoId = 4;
 let filtroAtual = "Todas";
 let timerMensagem;
 
-// ---------- Elementos ----------
 const $ = (id) => document.getElementById(id);
 const formDespesa = $("form-despesa");
 const formRenda = $("form-renda");
 const filtros = $("filtros");
 const tabela = $("tabela");
 
-// ---------- Utilidades ----------
 const moeda = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
 
 function formatarData(iso) {
@@ -48,7 +43,6 @@ function totalPorCategoria(nome) {
   return totalGastos(despesas.filter((d) => d.categoria === nome));
 }
 
-// ---------- Feedback visual ----------
 function mostrarMensagem(texto, tipo = "success") {
   const box = $("mensagem");
   box.className = `alert alert-${tipo}`;
@@ -69,7 +63,6 @@ function limparValidacao(form) {
   });
 }
 
-// ---------- Validação ----------
 function validarDespesa() {
   const descricao = $("descricao");
   const valor = $("valor");
@@ -85,7 +78,6 @@ function validarDespesa() {
   return ok.every(Boolean);
 }
 
-// ---------- Ações ----------
 function adicionarDespesa(evento) {
   evento.preventDefault();
   if (!validarDespesa()) {
@@ -142,7 +134,6 @@ function selecionarFiltro(evento) {
   renderizar();
 }
 
-// ---------- Renderização ----------
 function renderizarResumo() {
   const gastos = totalGastos();
   const saldo = renda - gastos;
@@ -223,7 +214,7 @@ function renderizarTabela() {
     tdData.textContent = formatarData(d.data);
 
     const tdDesc = document.createElement("td");
-    tdDesc.textContent = d.descricao; // textContent evita injeção de HTML
+    tdDesc.textContent = d.descricao; 
 
     const tdCat = document.createElement("td");
     const badge = document.createElement("span");
@@ -260,6 +251,30 @@ function renderizar() {
   renderizarFiltros();
   renderizarTabela();
 }
+function aplicarTema(tema) {
+  const noturno = tema === "dark";
+  document.documentElement.setAttribute("data-bs-theme", tema);
+  const btn = $("btn-tema");
+  btn.textContent = noturno ? "Modo claro" : "Modo noturno";
+  btn.setAttribute("aria-pressed", String(noturno));
+}
+
+function alternarTema() {
+  const atual = document.documentElement.getAttribute("data-bs-theme");
+  const novo = atual === "dark" ? "light" : "dark";
+  aplicarTema(novo);
+  try { localStorage.setItem("tema", novo); } catch (e) { /* sem armazenamento */ }
+}
+
+function iniciarTema() {
+  let tema = null;
+  try { tema = localStorage.getItem("tema"); } catch (e) { /* sem armazenamento */ }
+  if (!tema) {
+    tema = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  aplicarTema(tema);
+  $("btn-tema").addEventListener("click", alternarTema);
+}
 
 // ---------- Inicialização ----------
 function hojeISO() {
@@ -270,6 +285,7 @@ function hojeISO() {
 }
 
 function iniciar() {
+  iniciarTema();
   const select = $("categoria");
   select.innerHTML = '<option value="">Selecione...</option>';
   CATEGORIAS.forEach((c) => {

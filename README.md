@@ -2,7 +2,7 @@
 
 Aplicação web para controle de gastos pessoais, desenvolvida como projeto do 4º bimestre (Etapas 1 e 2) com **HTML, CSS, Bootstrap 5 e JavaScript**.
 
-**Autora:** Ane Rafaelle
+**Autor(a):** Ane Rafaelle
 
 ## Funcionalidades
 
@@ -14,7 +14,7 @@ Aplicação web para controle de gastos pessoais, desenvolvida como projeto do 4
 - Listagem em tabela, filtro por categoria e remoção de despesas
 - Botão para ocultar/mostrar valores
 - Feedback visual (alertas e campos inválidos) e layout responsivo
-
+- Modo escuro incluido
 ## Tecnologias
 
 - HTML5 semântico
